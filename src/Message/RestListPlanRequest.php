@@ -148,27 +148,6 @@ class RestListPlanRequest extends AbstractRestRequest
     }
 
     /**
-     * Get the request status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->getParameter('status');
-    }
-
-    /**
-     * Set the request status
-     *
-     * @param string $value
-     * @return AbstractRestRequest provides a fluent interface.
-     */
-    public function setStatus($value)
-    {
-        return $this->setParameter('status', $value);
-    }
-
-    /**
      * Get the request page size
      *
      * @return string
@@ -217,7 +196,6 @@ class RestListPlanRequest extends AbstractRestRequest
     {
         return array(
             'page'             => $this->getPage(),
-            'status'          => $this->getStatus(),
             'page_size'       => $this->getPageSize(),
             'total_required'        => $this->getTotalRequired()
         );
@@ -237,6 +215,6 @@ class RestListPlanRequest extends AbstractRestRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . '/payments/billing-plans';
+        return parent::getEndpoint() . '/billing/plans';
     }
 }

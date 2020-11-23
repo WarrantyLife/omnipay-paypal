@@ -168,6 +168,10 @@ class RestGateway extends AbstractGateway
     const BILLING_PLAN_STATE_DELETED    = 'DELETED';
     const PAYMENT_TRIAL                 = 'TRIAL';
     const PAYMENT_REGULAR               = 'REGULAR';
+    const PRODUCT_TYPE_PHYSICAL         = 'PHYSICAL';
+    const PRODUCT_TYPE_DIGITAL          = 'DIGITAL';
+    const PRODUCT_TYPE_SERVICE          = 'SERVICE';
+
 
     public function getName()
     {
@@ -642,6 +646,26 @@ class RestGateway extends AbstractGateway
     public function listPlan(array $parameters = array())
     {
         return $this->createRequest('\Omnipay\PayPal\Message\RestListPlanRequest', $parameters);
+    }
+
+    /**
+     * Create product
+     * @param array $parameters
+     * @return \Omnipay\PayPal\Message\RestCreateProductRequest
+     */
+    public function createProduct(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PayPal\Message\RestCreateProductRequest', $parameters);
+    }
+
+    /**
+     * List products
+     * @param array $parameters
+     * @return \Omnipay\PayPal\Message\RestListProductRequest
+     */
+    public function listProduct(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PayPal\Message\RestListProductRequest', $parameters);
     }
 
     /**

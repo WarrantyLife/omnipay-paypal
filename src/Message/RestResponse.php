@@ -63,6 +63,20 @@ class RestResponse extends AbstractResponse
         return $this->statusCode;
     }
 
+    public function getId()
+    {
+        if (isset($this->data['id'])) {
+            return $this->data['id'];
+        }
+    }
+
+    public function getPlanId()
+    {
+        if (isset($this->data['id'])) {
+            return $this->data['id'];
+        }
+    }
+
     public function getCardReference()
     {
         if (isset($this->data['id'])) {

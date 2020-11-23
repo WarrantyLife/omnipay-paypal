@@ -26,7 +26,7 @@ class RestAuthorizeResponse extends RestResponse implements RedirectResponseInte
     {
         if (isset($this->data['links']) && is_array($this->data['links'])) {
             foreach ($this->data['links'] as $key => $value) {
-                if ($value['rel'] == 'approval_url') {
+                if ($value['rel'] == 'approve') {
                     return $value['href'];
                 }
             }

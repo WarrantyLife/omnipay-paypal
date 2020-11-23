@@ -64,6 +64,13 @@ abstract class AbstractRestRequest extends \Omnipay\Common\Message\AbstractReque
 
     protected $referrerCode;
 
+    /*
+     * Instructs PayPal how to respond
+     * A 'minimal' response includes the id, name, description and HATEOAS links
+     * A 'representation' returns a complete resource representation, including the current state of the resource.
+     */
+    protected $responsePreference = 'minimal';
+
     /**
      * @var bool
      */
@@ -83,6 +90,22 @@ abstract class AbstractRestRequest extends \Omnipay\Common\Message\AbstractReque
     public function setReferrerCode($referrerCode)
     {
         $this->referrerCode = $referrerCode;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponsePreference()
+    {
+        return $this->responsePreference;
+    }
+
+    /**
+     * @param string $responsePreference
+     */
+    public function setResponsePreference($responsePreference)
+    {
+        $this->responsePreference = $responsePreference;
     }
 
     public function getClientId()
@@ -170,6 +193,7 @@ abstract class AbstractRestRequest extends \Omnipay\Common\Message\AbstractReque
                     'Authorization' => 'Bearer ' . $this->getToken(),
                     'Content-type' => 'application/json',
                     'PayPal-Partner-Attribution-Id' => $this->getReferrerCode(),
+                    'Prefer' => "return=". $this->getResponsePreference()
                 ),
                 $body
             );
