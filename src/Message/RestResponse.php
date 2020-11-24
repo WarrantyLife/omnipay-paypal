@@ -70,6 +70,13 @@ class RestResponse extends AbstractResponse
         }
     }
 
+    public function getSubscriptionReference()
+    {
+        if (isset($this->data['id'])) {
+            return $this->data['id'];
+        }
+    }
+
     public function getPlanId()
     {
         if (isset($this->data['id'])) {

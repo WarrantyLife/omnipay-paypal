@@ -683,6 +683,19 @@ class RestGateway extends AbstractGateway
     }
 
     /**
+     * Fetch a subscription
+     *
+     * Use this call to get details about a subscription.
+     *
+     * @param array $parameters
+     * @return \Omnipay\PayPal\Message\RestFetchSubscriptionRequest
+     */
+    public function fetchSubscription(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PayPal\Message\RestFetchSubscriptionRequest', $parameters);
+    }
+
+    /**
      * Complete (execute) a subscription.
      *
      * Use this call to execute an agreement after the buyer approves it.
