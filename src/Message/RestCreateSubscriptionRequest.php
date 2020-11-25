@@ -339,15 +339,18 @@ class RestCreateSubscriptionRequest extends AbstractRestRequest
 
     public function getData()
     {
-        $this->validate('plan_id', 'start_time', 'subscriber', 'application_context');
+        $this->validate('plan_id', 'subscriber', 'application_context');
         $data = [
             'plan_id'             => $this->getPlanId(),
             'custom_id'           => $this->getCustomId(),
-            'start_time'          => $this->getStartTime()->format('c'),
             'quantity'            => $this->getQuantity(),
             'subscriber'          => $this->getSubscriber(),
             'application_context' => $this->getApplicationContext()
         ];
+
+        if($this->getStartTime()) {
+            $data['start_time'] = $this->getStartTime()->format('c');
+        }
 
         return $data;
     }
