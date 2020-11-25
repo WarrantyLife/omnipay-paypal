@@ -233,6 +233,27 @@ class RestCreateSubscriptionRequest extends AbstractRestRequest
     }
 
     /**
+     * Get the custom ID
+     *
+     * @return string
+     */
+    public function getCustomId()
+    {
+        return $this->getParameter('custom_id');
+    }
+
+    /**
+     * Set the custom ID
+     *
+     * @param string $value
+     * @return RestCreateSubscriptionRequest provides a fluent interface.
+     */
+    public function setCustomId($value)
+    {
+        return $this->setParameter('custom_id', $value);
+    }
+
+    /**
      * Get the agreement start date
      *
      * @return \DateTime
@@ -321,6 +342,7 @@ class RestCreateSubscriptionRequest extends AbstractRestRequest
         $this->validate('plan_id', 'start_time', 'subscriber', 'application_context');
         $data = [
             'plan_id'             => $this->getPlanId(),
+            'custom_id'           => $this->getCustomId(),
             'start_time'          => $this->getStartTime()->format('c'),
             'quantity'            => $this->getQuantity(),
             'subscriber'          => $this->getSubscriber(),
