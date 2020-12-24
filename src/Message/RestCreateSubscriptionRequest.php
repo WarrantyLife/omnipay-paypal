@@ -233,6 +233,25 @@ class RestCreateSubscriptionRequest extends AbstractRestRequest
     }
 
     /**
+     * Get Overrides/discounts for the plan
+     * @return array
+     */
+    public function getPlan()
+    {
+        return $this->getParameter('plan');
+    }
+
+    /**
+     * Set Overrides/discounts for the plan*
+     * @param array $value
+     * @return RestCreateSubscriptionRequest provides a fluent interface.
+     */
+    public function setPlan($value)
+    {
+        return $this->setParameter('plan', $value);
+    }
+
+    /**
      * Get the custom ID
      *
      * @return string
@@ -350,6 +369,10 @@ class RestCreateSubscriptionRequest extends AbstractRestRequest
 
         if($this->getStartTime()) {
             $data['start_time'] = $this->getStartTime()->format('c');
+        }
+
+        if($this->getPlan()) {
+            $data['plan'] = $this->getPlan();
         }
 
         return $data;
