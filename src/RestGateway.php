@@ -709,6 +709,11 @@ class RestGateway extends AbstractGateway
         return $this->createRequest('\Omnipay\PayPal\Message\RestCompleteSubscriptionRequest', $parameters);
     }
 
+    public function reviseSubscription(array $parameters = array())
+    {
+        return $this->createRequest('\Omnipay\PayPal\Message\RestReviseSubscriptionRequest', $parameters);
+    }
+
     /**
      * Cancel a subscription.
      *
